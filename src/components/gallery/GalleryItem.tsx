@@ -1,22 +1,14 @@
 import React from 'react';
-import iconsTest from '../../assets/iconsTest.json'
 import icons from '../../assets/icons.json'
 import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 
-interface Props {
-  "item": { "id": string, "name": string, "filename": string, "parent": string, "editor": string },
-  id: number;
-  i: number;
-  inc: React.Dispatch<React.SetStateAction<number>>;
+interface IGalleryItemProps {
+  "item": { "id": string, "name": string, "filename": string, "parent": string, "editor": string };
+  elementId: number;
 }
 
-export const GalleryItem = ({ item, id, i, inc }: Props) => {
-  const elementId = Number(item.id) - 34;
-  if (Number(item.id) !== Number(id) + i) {
-    console.log(Number(item.id), Number(id) + i);
-  }
-
+export const GalleryItem = ({ item, elementId }: IGalleryItemProps) => {
   return (
     <>
       <div className='card'>
