@@ -7,16 +7,16 @@ import { Gallery } from "./components/gallery/Gallery";
 
 const cardIcon = [{
   "cardIcon": ``,
-  "dataId": 0
+  "dataIcon": 0
 }, {
   "cardIcon": ``,
-  "dataId": 0
+  "dataIcon": 0
 }, {
   "cardIcon": ``,
-  "dataId": 0
+  "dataIcon": 0
 }, {
   "cardIcon": ``,
-  "dataId": 0
+  "dataIcon": 0
 }];
 
 export const App = () => {
@@ -27,7 +27,7 @@ export const App = () => {
     setShowGallery(false);
     const obj = {
       "cardIcon": path,
-      "dataId": elementId
+      "dataIcon": elementId
     };
     cardIcon[changingInd] = obj;
   }
@@ -40,7 +40,7 @@ export const App = () => {
   const deleteHandler = () => {
     const obj = {
       "cardIcon": ``,
-      "dataId": 0
+      "dataIcon": 0
     };
     cardIcon[changingInd] = obj;
     setShowGallery(false);
@@ -54,7 +54,7 @@ export const App = () => {
           if (icon.cardIcon === ``) {
             return <div key={i}> <CardAdd ind={i} clickHandler={clickHandler} /> </div>;
           } else {
-            return <div key={i}><CardImg ind={i} fileName={icon.cardIcon} clickHandler={clickHandler} /> </div>
+            return <div key={i}><CardImg ind={i} dataIcon={icon.dataIcon} fileName={icon.cardIcon} clickHandler={clickHandler} /> </div>
           }
         })}
     </div>
