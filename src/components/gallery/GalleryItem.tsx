@@ -22,13 +22,11 @@ export const GalleryItem = ({ item, elementId, chosenIcon }: IGalleryItemProps) 
   }
 
   return (
-    <>
-      <div className="card">
-        <Card className="galleryItemCard" onClick={upFunc}>
-          <Card.Img src={encodedUrl} />
-          <Card.Text className="cardText">{item.name}</Card.Text>
-        </Card>
-      </div>
-    </>
+    <div className="card">
+      <Card className="galleryItemCard" onClick={upFunc}>
+        <Card.Img src={encodedUrl} />
+        <Card.Text className="cardText">{item.name}</Card.Text>
+      </Card>
+    </div>
   );
 };
