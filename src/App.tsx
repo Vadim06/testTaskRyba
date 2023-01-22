@@ -5,38 +5,58 @@ import { CardAdd } from "./components/cardAdd/CardAdd";
 import { CardImg } from "./components/cardImg/CardImg";
 import { Gallery } from "./components/gallery/Gallery";
 
-const cards = [0, 1, 2, 3];
-const cardIcon = [``, ``, ``, ``];
+const cardIcon = [{
+  "cardIcon": ``,
+  "dataId": 0
+}, {
+  "cardIcon": ``,
+  "dataId": 0
+}, {
+  "cardIcon": ``,
+  "dataId": 0
+}, {
+  "cardIcon": ``,
+  "dataId": 0
+}];
+
 export const App = () => {
-  const [icon1, setIcon1] = useState();
-  const [icon2, setIcon2] = useState();
-  const [icon3, setIcon3] = useState();
-  const [icon4, setIcon4] = useState();
+  const [changingInd, setChangingInd] = useState(0)
   const [showGallery, setShowGallery] = useState(false);
 
-  const chosenIcon = (path: string) => {
-    console.log(path);
+  const chosenIcon = (path: string, elementId: number) => {
+    setShowGallery(false);
+    const obj = {
+      "cardIcon": path,
+      "dataId": elementId
+    };
+    cardIcon[changingInd] = obj;
   }
 
   const clickHandler = (ind: number) => {
-    console.log(ind);
+    setShowGallery(true);
+    setChangingInd(ind);
+  }
+
+  const deleteHandler = () => {
+    const obj = {
+      "cardIcon": ``,
+      "dataId": 0
+    };
+    cardIcon[changingInd] = obj;
+    setShowGallery(false);
   }
 
   return (
     <div className="addCardsContainer">
       {showGallery ?
-        <Gallery chosenIcon={chosenIcon} />
+        <Gallery deleteFunc={deleteHandler} chosenIcon={chosenIcon} />
         : cardIcon.map((icon, i) => {
-          if (icon === ``) {
+          if (icon.cardIcon === ``) {
             return <div key={i}> <CardAdd ind={i} clickHandler={clickHandler} /> </div>;
           } else {
-            return <div key={i}><CardImg fileName={icon} /> </div>
+            return <div key={i}><CardImg ind={i} fileName={icon.cardIcon} clickHandler={clickHandler} /> </div>
           }
         })}
     </div>
   );
 }
-/*
-
-    <Gallery chosenIcon={chosenIcon} />
-*/

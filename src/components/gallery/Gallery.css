@@ -1,31 +1,63 @@
 .cardText {
-    text-align: center;
+  text-align: center;
 }
 
 .card {
-    cursor: pointer;
-    display: inline-block;
-    user-select: none;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
 }
 
 .card:hover {
-    background-color: rgba(255, 255, 255, 0.227);
+  background-color: rgba(255, 255, 255, 0.227);
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 1rem;
-    justify-items: center;
-    padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  padding: 4rem;
 }
 
 .galleryItem {
-    display: inline-block;
+  display: inline-block;
 }
 
 .searchBar {
-    width: 10rem;
-    margin-left: 6rem;
-    margin-top: 2rem;
+  width: 10rem;
+  margin-left: 6rem;
+  margin-top: 2rem;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+header p {
+  cursor: pointer;
+  color: white;
+  font-size: large;
+  margin-bottom: 0;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+header p:hover {
+  color: wheat;
+}
+
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.select {
+    width: 20rem;
+    margin: 3rem auto;
+    margin-bottom: 0;
+    cursor: pointer;
 }

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useState, useEffect, useRef } from "react";
 import "./Gallery.css";
 import { GalleryItem } from "./GalleryItem";
 import icons from "../../assets/icons.json";
+import Form from 'react-bootstrap/Form'
 
 interface IGalleryProps {
-  chosenIcon: (path:string) => void;
+  chosenIcon: (path: string, elementId: number) => void;
+  deleteFunc: () => void;
 }
 
-export const Gallery = ({ chosenIcon }: IGalleryProps) => {
+export const Gallery = ({ chosenIcon, deleteFunc }: IGalleryProps) => {
   const [filteredData, setFilteredData] = useState(icons);
   const [inputValue, setInputValue] = useState<string>("");
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,12 +32,23 @@ export const Gallery = ({ chosenIcon }: IGalleryProps) => {
       setFilteredData(icons);
     }
   };
-  const upFunc = (path: string) => {
-    chosenIcon(path);
+  const upFunc = (path: string, elementId: number) => {
+    chosenIcon(path, elementId);
+  }
+  const setFilters = (e: ChangeEvent<HTMLSelectElement>) => {
+    if (e.currentTarget.value === 'energie') {
+      setFilteredData(
+        icons.filter((item) => {
+          return item.name.toLowerCase().includes(e.currentTarget.value);
+        })
+      );
+    } else if (e.currentTarget.value === 'all') {
+      setFilteredData(icons);
+    }
   }
 
   return (
-    <>
+    <div className="galleryContainer">
       <header>
         <form
           onSubmit={(e) => {
@@ -51,7 +64,13 @@ export const Gallery = ({ chosenIcon }: IGalleryProps) => {
             }}
           />
         </form>
+        <p className="delete" onClick={() => { deleteFunc() }}>smazat</p>
       </header>
+      <Form.Select onChange={(e) => { setFilters(e) }} className="select" aria-label="Default select example">
+        <option disabled={true}> filtrovat</option>
+        <option value="all">Vše</option>
+        <option value="energie">Energie</option>
+      </Form.Select>
       <div className="gallery">
         {filteredData.map((item) => {
           return (
@@ -64,6 +83,6 @@ export const Gallery = ({ chosenIcon }: IGalleryProps) => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };

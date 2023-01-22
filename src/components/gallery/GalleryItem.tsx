@@ -10,7 +10,7 @@ interface IGalleryItemProps {
     editor: string;
   };
   elementId: number;
-  chosenIcon: (path: string) => void;
+  chosenIcon: (path: string, elementId: number) => void;
 }
 
 export const GalleryItem = ({ item, elementId, chosenIcon }: IGalleryItemProps) => {
@@ -18,7 +18,7 @@ export const GalleryItem = ({ item, elementId, chosenIcon }: IGalleryItemProps) 
     `https://eletak.oresi.cz/files/Icons/CZ/${item.filename}`
   );
   const upFunc = () => {
-    chosenIcon(item.filename);
+    chosenIcon(item.filename, elementId);
   }
 
   return (

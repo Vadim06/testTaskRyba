@@ -2065,6 +2065,13 @@
   "resolved" "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   "version" "1.2.4"
 
+"@types/react-bootstrap@^0.32.32":
+  "integrity" "sha512-GM9UtV7v+C2F0rbqgIpMWdCKBMdX3PQURoJQobPO4vDAeFadcExNtKffi13/MjaAks+riJKVGyiMe+6OmDYT2w=="
+  "resolved" "https://registry.npmjs.org/@types/react-bootstrap/-/react-bootstrap-0.32.32.tgz"
+  "version" "0.32.32"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^18.0.0":
   "integrity" "sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg=="
   "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.10.tgz"
