@@ -1,3 +1,7 @@
+# Icons test task
+
+This is a project to practise React/API skills. click on the plus sign and pick any icon you want
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
