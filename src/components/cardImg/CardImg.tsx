@@ -1,5 +1,3 @@
-import React from "react";
-import "./CardImg.css";
 import Card from "react-bootstrap/Card";
 
 interface ICardImgProps {
@@ -16,7 +14,7 @@ export const CardImg = ({ ind, fileName, clickHandler, dataIcon }: ICardImgProps
 
   return (
     <div>
-      <Card onClick={() => { clickHandler(ind) }} className="addCard" style={{ width: "8rem", height: "8rem" }}>
+      <Card onClick={() => { clickHandler(ind) }} className="addCard">
         <Card.Img data-icon={dataIcon} src={encodedUrl} />
       </Card>
     </div>

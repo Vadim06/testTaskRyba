@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./Gallery.css";
 import { GalleryItem } from "./GalleryItem";
 import icons from "../../assets/icons.json";

@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import { useState, useEffect } from "react";
 import { CardAdd } from "./components/cardAdd/CardAdd";
@@ -52,9 +51,9 @@ export const App = () => {
         <Gallery deleteFunc={deleteHandler} chosenIcon={chosenIcon} />
         : cardIcon.map((icon, i) => {
           if (icon.cardIcon === ``) {
-            return <div key={i}> <CardAdd ind={i} clickHandler={clickHandler} /> </div>;
+            return <CardAdd key={i} ind={i} clickHandler={clickHandler} />;
           } else {
-            return <div key={i}><CardImg ind={i} dataIcon={icon.dataIcon} fileName={icon.cardIcon} clickHandler={clickHandler} /> </div>
+            return <CardImg key={i} ind={i} dataIcon={icon.dataIcon} fileName={icon.cardIcon} clickHandler={clickHandler} />;
           }
         })}
     </div>

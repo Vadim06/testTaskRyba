@@ -1,5 +1,5 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
+import "./GalleryItem.css";
 
 interface IGalleryItemProps {
   item: {
@@ -24,7 +24,7 @@ export const GalleryItem = ({ item, elementId, chosenIcon }: IGalleryItemProps) 
   return (
     <>
       <div className="card">
-        <Card onClick={upFunc} style={{ width: "6rem", minHeight: "8.5rem" }}>
+        <Card className="galleryItemCard" onClick={upFunc}>
           <Card.Img src={encodedUrl} />
           <Card.Text className="cardText">{item.name}</Card.Text>
         </Card>

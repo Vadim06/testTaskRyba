@@ -1,9 +1,12 @@
 .addCard {
+  display: flex;
   margin: 2rem;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   background-color: grey;
+  width: 8rem;
+  height: 8rem;
 }
 
 .cardPlus {
