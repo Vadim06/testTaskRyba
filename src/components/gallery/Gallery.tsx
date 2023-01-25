@@ -12,37 +12,37 @@ interface IGalleryProps {
 
 export const Gallery = ({ chosenIcon, deleteFunc }: IGalleryProps) => {
   const [filteredData, setFilteredData] = useState(icons);
-  const [inputValue, setInputValue] = useState<string>("");
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (inputValue) {
-      setInputValue(inputValue.toLowerCase());
-      setFilteredData(
-        icons.filter((item) => {
-          if (inputValue === "") {
-            return item;
-          } else {
-            if (inputValue) {
-              return item.name.toLowerCase().includes(inputValue);
-            }
-          }
-        })
-      );
-    } else {
-      setFilteredData(icons);
+  const [localSearch, setLocalSearch] = useState("");
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let currentValue = e.target.value.toLowerCase();
+    if (localSearch !== "") {
+      currentValue = localSearch + " " + e.target.value.toLowerCase()
     }
+    setFilteredData(
+      icons.filter((item) => {
+        if (currentValue === "") {
+          return item;
+        } else {
+          if (currentValue) {
+            return item.name.toLowerCase().includes(currentValue);
+          }
+        }
+      })
+    );
   };
   const upFunc = (path: string, elementId: number) => {
     chosenIcon(path, elementId);
   }
   const setFilters = (e: ChangeEvent<HTMLSelectElement>) => {
     if (e.currentTarget.value === 'energie') {
+      setLocalSearch('energie');
       setFilteredData(
         icons.filter((item) => {
           return item.name.toLowerCase().includes(e.currentTarget.value);
         })
       );
     } else if (e.currentTarget.value === 'all') {
+      setLocalSearch("");
       setFilteredData(icons);
     }
   }
@@ -50,23 +50,17 @@ export const Gallery = ({ chosenIcon, deleteFunc }: IGalleryProps) => {
   return (
     <div className="galleryContainer">
       <header>
-        <form
-          onSubmit={(e) => {
-            submitHandler(e);
-          }}
-        >
+        <form>
           <input
             className="searchBar"
             type="text"
             placeholder="hledat"
-            onChange={(e) => {
-              setInputValue(e.currentTarget.value);
-            }}
+            onChange={changeHandler}
           />
         </form>
         <p className="delete" onClick={() => { deleteFunc() }}>smazat</p>
       </header>
-      <Form.Select onChange={(e) => { setFilters(e) }} className="select" aria-label="Default select example">
+      <Form.Select onChange={(e) => { setFilters(e) }} className="select">
         <option disabled={true}> filtrovat</option>
         <option value="all">Vše</option>
         <option value="energie">Energie</option>

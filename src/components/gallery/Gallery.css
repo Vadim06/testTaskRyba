@@ -3,12 +3,14 @@
 }
 
 .card {
+  transition: .2s;
   cursor: pointer;
   user-select: none;
 }
 
 .card:hover {
   background-color: rgba(255, 255, 255, 0.227);
+  transform: scale(1.05);
 }
 
 .gallery {
@@ -55,8 +57,14 @@ header p:hover {
 }
 
 .select {
-    width: 20rem;
-    margin: 3rem auto;
-    margin-bottom: 0;
-    cursor: pointer;
+  width: 20rem;
+  margin: 3rem auto;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
